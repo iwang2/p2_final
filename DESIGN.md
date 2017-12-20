@@ -16,5 +16,5 @@ something to do with networking
 7. extending my_tunez --> spotify??? soundcloud???
 
 ### Timeline
-`[ 01.19 ]` finish the project
+`[ 01.19 ]` finish the project  
 `[01.19], midnight` break out the champagne
