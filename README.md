@@ -1,3 +1,7 @@
 # p2_final
-### collaborators
-alex ida penn
+
+### Collaborators
+Alex Lu, Ida Wang, Penn Wu
+
+### Compilation Instructions
+1. `$ make`
