@@ -30,6 +30,6 @@ we're not doing this. we're too dumb.
 - kind of like spotify
 
 ## Timeline
-`[ 01.01 ]` break out the champagne
+`[ 01.01 ]` break out the champagne  
 `[ 01.19 ]` finish the project  
 `[ 01.19 ], midnight` break out the vodka
