@@ -29,7 +29,12 @@ we're not doing this. we're too dumb.
 - extending the project, more audio stuff
 - kind of like spotify
 
+### musical chairs
+- each computer is assigned a probability
+- actual musical chairs / people walk around and try to avoid high probability computers??? 
+
 ## Timeline
-`[ 01.01 ]` break out the champagne  
+`[ 12.25 ]` break out the eggnog
+`[ 01.01 ]` break out the champagne. also cry a little bit about college.
 `[ 01.19 ]` finish the project  
 `[ 01.19 ], midnight` break out the vodka
