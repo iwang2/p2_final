@@ -1,5 +1,5 @@
 ### Group Members
-Alex Lu, Ida Wang, Penn Wu
+Alex Lu, Ida Wang :shit:, Penn Wu
 
 ## ideas
 - something to do with networking, but we still dont know how that works so that might be a problem
