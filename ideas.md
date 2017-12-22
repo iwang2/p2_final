@@ -1,5 +1,5 @@
-### Group Members
-Alex Lu, Ida Wang :shit:, Penn Wu
+### Group Mem:b:ers
+Alex Lu, Ida Wang, :b:enn Wu
 
 ## ideas
 - something to do with networking, but we still dont know how that works so that might be a problem
@@ -34,8 +34,8 @@ we're not doing this. we're too dumb.
 - actual musical chairs / people walk around and try to avoid high probability computers??? 
 
 ## Timeline
-`[ 12.25 ]` break out the eggnog  
-`[ 01.01 ]` break out the champagne. also cry a little bit about college.  
+`[ 12.25 ]` :b:reak out the eggnog  
+`[ 01.01 ]` :b:reak out the champagne. also cry a little bit about college.  
 `[ 01.15 ]` cry a little more  
 `[ 01.19 ]` finish the project  
-`[ 01.19 ], midnight` break out the vodka  
+`[ 01.19 ], midnight` :b:reak out the vodka  
