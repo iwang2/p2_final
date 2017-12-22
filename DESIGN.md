@@ -8,7 +8,8 @@ Musical chairs. Except to make it more fun, each chair will also be assigned a p
 
 ### User Interface
 One main server that will control the game (i.e. start music, stop music, etc.)  
-Rest of the computers will be individual "seats" that connect back to the main server.  
+Rest of the computers will be individual "seats" that connect back to the main server.
+Each computer will play music and display the probability of death in the terminal.
 
 ### Technical Design
 - kind of an extension of forking server
@@ -17,8 +18,19 @@ Rest of the computers will be individual "seats" that connect back to the main s
 
 **TOPICS:** pipes, networking, memory allocation, processes, signals (maybe)
 
+**DATA STRUCTURES:** arrays
+
 **ALGORITHMS:**
+All seats initially connect to the main server
+Every round, server chooses a seat that will die based on assigned probabilities
+All seats will play music
 
 **BREAKDOWN:** 
+Alex: 
+Ida: 
+Penn: 
 
 ### Timeline
+Modify current forking server code so the main server can communicate to every subserver over the break
+Finish non-networking stuff (playing music, assigning probabilities, etc.) over the break
+Learn networking after the break and use sockets instead of pipes
