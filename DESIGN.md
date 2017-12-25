@@ -1,5 +1,7 @@
 # DESIGN
 
+**note:** see `ideas.md` file for our other ideas if this one is too dumb
+
 ### Collaborators
 Alex Lu, Ida Wang, Penn Wu
 
