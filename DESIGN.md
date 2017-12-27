@@ -69,7 +69,9 @@ Each computer display the probability of death in the terminal. The main compute
 - hopefully allow user to select music 
 
 *Penn's Timeline:* 
-
+`[01.03.18]` Settle on an algorithm for choosing a computer
+`[01.04.18]` Implement said algorithm
+`[01.14.18]` Modify code to communicate between multiple computers rather than multiple terminals
 
 
 
