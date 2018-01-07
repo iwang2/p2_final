@@ -13,8 +13,8 @@
 #define NETWORKING_H
 
 #define BUFFER_SIZE 256
-#define PORT "65530"
-#define TEST_IP "108.46.50.74"
+#define PORT "9001"
+#define TEST_IP "127.0.0.1"
 
 void error_check(int i, char *s);
 int server_setup();
