@@ -14,7 +14,7 @@
 
 #define BUFFER_SIZE 256
 #define PORT "9001"
-#define TEST_IP "192.168.0.31"
+#define TEST_IP "149.89.150.123"
 
 void error_check(int i, char *s);
 int server_setup();
