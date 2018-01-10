@@ -31,4 +31,6 @@ networking.o: networking.c networking.h
 
 clean:
 	rm *.o
+	rm client
+	rm server
 	rm *~
