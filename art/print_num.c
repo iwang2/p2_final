@@ -20,6 +20,22 @@ char * print_num (int n) {
   int fd2 = open("per.txt", O_RDONLY);  
 }
 
+char ** arr () {
+  char s[10][sizeof("0.txt")];
+  char temp[sizeof("0.txt")];
+  for(int i = 0; i < 10; i++){
+    sprintf(temp, "%d", i);
+    strcat(temp, ".txt");
+
+    struct stat sb;
+    stat(temp, &sb);
+
+    int fd = open(temp, O_RDONLY);
+    for(int n = 0; n < 16; n++){
+      strcpy(s[i][n], 
+  }
+}
+
 int main(){
   for(int i = 0; i < 11; i++){
     struct stat sb;
