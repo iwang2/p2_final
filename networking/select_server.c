@@ -57,7 +57,9 @@ void subserver(int client_socket) {
   write(client_socket, buffer, sizeof(buffer));
 
   while (read(client_socket, buffer, sizeof(buffer))) {
-
+    if (!strcmp(buffer, "exit")) {
+        printf("Trying to exit\n");
+    }
     printf("[subserver %d] received: [%s]\n", getpid(), buffer);
     process(buffer);
     write(client_socket, buffer, sizeof(buffer));
