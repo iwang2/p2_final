@@ -36,6 +36,6 @@ we're not doing this. we're too dumb.
 ## Timeline
 `[ 12.25 ]` :b:reak out the eggnog  
 `[ 01.01 ]` :b:reak out the champagne :wine_glass:. also cry a little bit about college :cry:.  
-`[ 01.15 ]` cry a little more :cry: 
+`[ 01.15 ]` cry a little more :cry:  
 `[ 01.19 ]` finish the project  
 `[ 01.19 ], midnight` :b:reak out the vodka  
