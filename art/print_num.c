@@ -23,8 +23,10 @@ char * print_num (int n) {
 */
 
 char ** arr () {
-  char s[10][16];
+  char *** s = malloc(10 * 16 * sizeof(char *));
+  //char s[10][16][23];
   char temp[sizeof("0.txt")];
+  
   for(int i = 0; i < 10; i++){
     sprintf(temp, "%d", i);
     strcat(temp, ".txt");
@@ -34,15 +36,18 @@ char ** arr () {
     int size = (int)sb.st_size / 16;
 
     int fd = open(temp, O_RDONLY);
+    
     for(int n = 0; n < 16; n++){
-      s[i][n] = (char *)malloc(size);
-      if (read(fd, s[i][n], size) == -1) {
+      //s[i][n] = (char *)malloc(size);
+      *(s + i + n) = malloc(size);
+      if (read(fd, *(s + i + n), size) == -1) {
 	printf("%s\n", strerror(errno));
 	exit(0);
       }
     }
     close(fd);
   }
+  return s;
 }
 
 int main(){
@@ -57,5 +62,14 @@ int main(){
     stat(s, &sb);
     printf("%s: %d\n", s, (int)sb.st_size);
   }
-  char ** a = arr();
+  
+  char *** s = arr();
+  //strcpy(s, arr());
+  for(int i = 0; i < 10; i++){
+    for(int k = 0; k < 16; k++){
+      //for(int j = 0; a[j]; j++){
+      printf("%d, %d: %s\n", i, k, *(s + i + k));
+	// }
+    }
+  }
 }
