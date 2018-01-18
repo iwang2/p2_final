@@ -10,16 +10,35 @@
 // file size of percent is 368
 
 void print_num (int n) {
-  int
-    fd1 = -1,
-    fd2 = -1;
-  int fdp = open("per.txt", O_RDONLY);
-  int size = 0;
+  int fds[3][2];
+  fds[2][0] = open("per.txt", O_RDONLY);
+  // fds[x][0] is the file descriptor
+  // fds[x][1] is the line size
 
-  if ( n/10 > 0 ) {
+  char s[sizeof("0.txt")];
+  for (int g = 1; g >= 0; g--){
+    sprintf(s, "%d", n%10);
+    strcat(s, ".txt");
+    fds[g][0] = open(s, O_RDONLY);
+
+    struct stat sb;
+    stat(s, &sb);
+    fds[g][1] = (int)sb.st_size / 16;
     
+    n /= 10;
   }
   
+  for (int i = 0; i < 16; i++) {
+    for(int j = 0; j < 3; j++) {
+      int fd = fds[j][0], size = fds[j][1];
+      char buff[size];
+      read(fd, buff, size);
+      printf("%s ", buff);
+    }
+    printf("\n");
+  }
+
+  /*
   for (int i = 0; n / 10 > 0; i++) {    
     char s[sizeof("per.txt")];
     if (nc == 1) {
@@ -43,6 +62,7 @@ void print_num (int n) {
   close(fd1);
   close(fdp);
   if (fd2 > -1) close(fd2);
+  */
 }
 
 /*
