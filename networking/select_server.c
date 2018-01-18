@@ -3,12 +3,13 @@
 void process(char *s);
 void subserver(int from_client);
 
+int subserver_count = 0;
+
 int main() {
 
   int listen_socket;
   int client_socket;
   int f;
-  int subserver_count = 0;
   char buffer[BUFFER_SIZE];
 
   //set of file descriptors to read from
@@ -57,13 +58,12 @@ void subserver(int client_socket) {
   write(client_socket, buffer, sizeof(buffer));
 
   while (read(client_socket, buffer, sizeof(buffer))) {
-    if (!strcmp(buffer, "exit")) {
-        printf("Trying to exit\n");
-    }
     printf("[subserver %d] received: [%s]\n", getpid(), buffer);
     process(buffer);
     write(client_socket, buffer, sizeof(buffer));
   }//end read loop
+  printf("Client disconnected\n");
+  subserver_count --;
   close(client_socket);
   exit(0);
 }
