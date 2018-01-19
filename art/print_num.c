@@ -11,6 +11,7 @@
 
 void print_num (int n) {
   int fd, size;
+  int single = 0;
   
   int fds[3][2];
   fds[2][0] = open("per.txt", O_RDONLY);
@@ -25,6 +26,10 @@ void print_num (int n) {
     sprintf(s, "%d", n%10);
     strcat(s, ".txt");
     fds[g][0] = open(s, O_RDONLY);
+
+    if(g == 0 && strcmp(s, "0.txt") == 0) {
+      single = 1;
+    }
 
     stat(s, &sb);
     fds[g][1] = (int)sb.st_size / 16;
@@ -41,7 +46,7 @@ void print_num (int n) {
       read(fd, buff, size);
       //buff[0] = ' ';
       buff[size-1] = 0;
-      printf("%s ", buff);
+      if((single && j != 0) || (!single)) printf("%s ", buff);
       //memset(buff, 0, sizeof(buff));
     }
     printf("\n");
@@ -52,6 +57,10 @@ void print_num (int n) {
   }
 }
 
-int main(){
-  print_num(87);
+int main(int argc, char *argv[]){
+  if (argc > 0) {
+    int num = atoi(argv[1]);
+    //printf("%d\n", num);
+    print_num(num);
+  }
 }
