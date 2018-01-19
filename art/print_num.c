@@ -39,7 +39,7 @@ void print_num (int n) {
       
       char buff[size];
       read(fd, buff, size);
-      buff[0] = ' ';
+      //buff[0] = ' ';
       buff[size-1] = 0;
       printf("%s ", buff);
       //memset(buff, 0, sizeof(buff));
