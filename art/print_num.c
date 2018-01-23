@@ -46,7 +46,7 @@ void print_num (int n) {
       read(fd, buff, size);
       //buff[0] = ' ';
       buff[size-1] = 0;
-      if((single && j != 0) || (!single)) printf("%s ", buff);
+      if((single && j != 0) || (!single)) printf("%s  ", buff);
       //memset(buff, 0, sizeof(buff));
     }
     printf("\n");
