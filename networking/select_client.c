@@ -1,5 +1,7 @@
 #include "networking.h"
 
+void process (char * s);
+
 int main(int argc, char **argv) {
 
   int server_socket;
@@ -12,7 +14,7 @@ int main(int argc, char **argv) {
   else
     server_socket = client_setup( TEST_IP );
 
-  while (1) {
+  while (read(server_socket, buffer, sizeof(buffer))) {
 
     printf("enter data: ");
     //the above printf does not have \n
@@ -29,11 +31,9 @@ int main(int argc, char **argv) {
     select(server_socket + 1, &read_fds, NULL, NULL, NULL);
 
     if (FD_ISSET(STDIN_FILENO, &read_fds)) {
-      fgets(buffer, sizeof(buffer), stdin);
-      *strchr(buffer, '\n') = 0;
-      write(server_socket, buffer, sizeof(buffer));
-      read(server_socket, buffer, sizeof(buffer));
       printf("received: [%s]\n", buffer);
+      process(buffer);
+      write(server_socket, buffer, sizeof(buffer));
     }//end stdin select
 
     //currently the server is not set up to
