@@ -11,8 +11,8 @@ fserver: forking_server.o networking.o
 sclient: select_client.o networking.o
 	gcc -o client select_client.o networking.o
 
-client: select_client.o networking.o
-	gcc -o client select_client.o networking.o
+client: client.o networking.o
+	gcc -o client client.o networking.o
 
 select_client.o: select_client.c networking.h
 	gcc -c select_client.c
@@ -31,6 +31,4 @@ networking.o: networking.c networking.h
 
 clean:
 	rm *.o
-	rm client
-	rm server
 	rm *~
