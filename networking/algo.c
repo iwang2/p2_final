@@ -2,7 +2,6 @@
 #include <time.h>
 
 int* assign(int k){
-  srand(time(NULL));
   int i;
   int track = 100;
   int * probs = calloc(k + 1, sizeof(int));
@@ -35,21 +34,41 @@ int arrlen(int * arr){
 int pick(int * probs){
   int * weighted = calloc(100, sizeof(int));
   int i;
-  int k;
+  int k = 0;
+  int track = 0;
   srand(time(NULL));
+  /*
+  while(k < probs[0] + 1){
+    memset(weighted, k, track * sizeof(int));
+    track += probs[k];
+    k++;
+  }
+  */
+
+
+  
   for(i = 1; i < 1 + probs[0]; i++){
-    for(k = 0; k < probs[i]; k++){
-      weighted[k] = i - 1;
+    while(k < probs[i]){
+      weighted[k + track] = i;
+      k++;
     }
+    track += probs[i];
+
+    
+    k = 0;
+    
   }
   
-  //test
+  
+
+
+
   int j;
   
   for(j = 0; j < 100; j++){
     printf("At position %d, the value of the weighted array is %d\n", j, weighted[j]);
   }
-  
+  srand(time(NULL)); 
   int ret = weighted[rand() % 100];
   free(weighted);
   return ret;
@@ -59,7 +78,7 @@ int pick(int * probs){
 
 
 int main(){
-  int j = 5;
+  //int j = 5;
   int * test = assign(5);
   /*
   printf("size of test: %d\n", sizeof(*test));
@@ -67,7 +86,7 @@ int main(){
   printf("length of test: %d\n", (sizeof(test) / sizeof(test[0])));
   */
   int i;
-  for(i = 0; i < j; i++){
+  for(i = 1; i < 6; i++){
     printf("At position %d, the value is %d\n", i, test[i]);
   }
   int k = pick(test);
