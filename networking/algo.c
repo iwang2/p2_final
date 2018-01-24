@@ -64,10 +64,11 @@ int pick(int * probs){
 
 
   int j;
-  
+  /*
   for(j = 0; j < 100; j++){
     printf("At position %d, the value of the weighted array is %d\n", j, weighted[j]);
   }
+  */
   srand(time(NULL)); 
   int ret = weighted[rand() % 100];
   free(weighted);
@@ -87,7 +88,7 @@ int main(){
   */
   int i;
   for(i = 1; i < 6; i++){
-    printf("At position %d, the value is %d\n", i, test[i]);
+    printf("At position %d, the probability as a percentage is %d\n", i, test[i]);
   }
   int k = pick(test);
   printf("value of pick: %d\n", k);
