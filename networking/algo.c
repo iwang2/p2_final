@@ -44,12 +44,11 @@ int pick(int * probs){
   
   //test
   int j;
+  /*
   for(j = 0; j < 100; j++){
     printf("At position %d, the value of the weighted array is %d\n", j, weighted[j]);
   }
-
-
-
+  */
   int ret = weighted[rand() % 100];
   free(weighted);
   return ret;
@@ -59,12 +58,13 @@ int pick(int * probs){
 
 
 int main(){
+  int j = 5;
   int * test = assign(5);
-  printf("size of test: %d\n", sizeof(test));
+  printf("size of test: %d\n", sizeof(*test));
   printf("size of first element of test: %d\n", sizeof(test[0]));
   printf("length of test: %d\n", (sizeof(test) / sizeof(test[0])));
   int i;
-  for(i = 0; i < 5; i++){
+  for(i = 0; i < j; i++){
     printf("At position %d, the value is %d\n", i, test[i]);
   }
   int k = pick(test);
