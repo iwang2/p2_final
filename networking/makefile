@@ -30,5 +30,7 @@ networking.o: networking.c networking.h
 	gcc -c networking.c
 
 clean:
+	rm server
+	rm client
 	rm *.o
 	rm *~

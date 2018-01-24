@@ -1,6 +1,5 @@
 #include "networking.h"
 
-void process(char *s);
 void subserver(int from_client);
 
 int main() {
@@ -21,7 +20,7 @@ int main() {
     //select() modifies read_fds
     //we must reset it at each iteration
     FD_ZERO(&read_fds); //0 out fd set
-    FD_SET(STDIN_FILENO, &read_fds); //add stdin to fd set
+    //FD_SET(STDIN_FILENO, &read_fds); //add stdin to fd set
     FD_SET(listen_socket, &read_fds); //add socket to fd set
 
     //select will block until either fd is ready
@@ -36,16 +35,19 @@ int main() {
        subserver(client_socket);
      else {
        subserver_count++;
+       printf("[server] subserver count: %d\n", subserver_count);
        close(client_socket);
      }
     }//end listen_socket select
 
+    /*
     //if stdin triggered select
     if (FD_ISSET(STDIN_FILENO, &read_fds)) {
       //if you don't read from stdin, it will continue to trigger select()
       fgets(buffer, sizeof(buffer), stdin);
       printf("[server] subserver count: %d\n", subserver_count);
     }//end stdin select
+    */
   }
 }
 
@@ -56,22 +58,13 @@ void subserver(int client_socket) {
   strncpy(buffer, "hello client", sizeof(buffer));
   write(client_socket, buffer, sizeof(buffer));
 
-  while (read(client_socket, buffer, sizeof(buffer))) {
-
-    printf("[subserver %d] received: [%s]\n", getpid(), buffer);
-    process(buffer);
+  while (1) {
+    printf("enter data: ");
+    fgets(buffer, sizeof(buffer), stdin);
+    *strchr(buffer, '\n') = 0;
     write(client_socket, buffer, sizeof(buffer));
-  }//end read loop
+    read(client_socket, buffer, sizeof(buffer));
+  }
   close(client_socket);
   exit(0);
-}
-
-void process(char * s) {
-  while (*s) {
-    if (*s >= 'a' && *s <= 'z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    else  if (*s >= 'A' && *s <= 'Z')
-      *s = ((*s - 'a') + 13) % 26 + 'a';
-    s++;
-  }
 }
