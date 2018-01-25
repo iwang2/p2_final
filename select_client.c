@@ -1,7 +1,5 @@
 #include "networking.h"
-#include "/art/print_num.c"
-
-void process (char * s);
+#include "print_num.h"
 
 int main(int argc, char **argv) {
 
@@ -20,7 +18,7 @@ int main(int argc, char **argv) {
       printf("received: [%s]\n", buffer);
     }
     else {
-      printnum(atoi(buffer));
+      print_num(atoi(buffer));
     }
   }//end loop
 }

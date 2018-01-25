@@ -1,3 +1,4 @@
+#include "print_num.h"
 
 // 16 lines per number
 // file size of percent is 368
