@@ -15,14 +15,9 @@ int main(int argc, char **argv) {
     server_socket = client_setup( TEST_IP );
 
   while (read(server_socket, buffer, sizeof(buffer))) {
-
+    printf("received: [%s]\n", buffer);
+    
     /*
-    printf("enter data: ");
-    //the above printf does not have \n
-    //flush the buffer to immediately print
-    fflush(stdout);
-    */
-
     //select() modifies read_fds
     //we must reset it at each iteration
     FD_ZERO(&read_fds);
@@ -35,6 +30,7 @@ int main(int argc, char **argv) {
       printf("received: [%s]\n", buffer);
       write(server_socket, buffer, sizeof(buffer));
     }//end stdin select
+    */
 
   }//end loop
 }

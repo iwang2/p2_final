@@ -53,9 +53,12 @@ int main() {
     
     fgets(buffer, sizeof(buffer), stdin);
   }
-  print_list(head);
-  head = remove_node(head, head);
-  print_list(head);
+  struct node * n = head;
+  while(n){
+    write(n->i, "test", sizeof("test"));
+    n = n->next;
+  }
+  printf("finished writing\n");
   free_list(head);
 }
 
@@ -66,16 +69,6 @@ void subserver(int client_socket) {
   strncpy(buffer, "hello client", sizeof(buffer));
   write(client_socket, buffer, sizeof(buffer));
 
-  //fgets(buffer, sizeof(buffer), stdin);
-  /*
-  while (1) {
-    printf("enter data: ");
-    fgets(buffer, sizeof(buffer), stdin);
-    *strchr(buffer, '\n') = 0;
-    write(client_socket, buffer, sizeof(buffer));
-    read(client_socket, buffer, sizeof(buffer));
-  }
-  */
   close(client_socket);
   exit(0);
 }
