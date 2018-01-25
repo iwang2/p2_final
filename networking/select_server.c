@@ -1,5 +1,6 @@
 #include "networking.h"
 #include "list.h"
+#include "algo.h"
 
 void subserver(int from_client);
 
@@ -53,10 +54,18 @@ int main() {
     
     fgets(buffer, sizeof(buffer), stdin);
   }
+  srand(time(NULL));
+  
   struct node * n = head;
+  int * probs = assign(subserver_count);
+  int count = probs[0];
+  char num[sizeof("99")];
+  
   while(n){
-    write(n->i, "test", sizeof("test"));
+    sprintf(num, "%d", probs[count]);
+    write(n->i, num, sizeof(num));
     n = n->next;
+    count--;
   }
   printf("finished writing\n");
   free_list(head);

@@ -1,5 +1,5 @@
 #include "networking.h"
-#include <time.h>
+#include "algo.h"
 
 int* assign(int k){
   int i;
@@ -35,29 +35,9 @@ int pick(int * probs){
     k = 0;  
   }
   int j;
-  /*
-  for(j = 0; j < 100; j++){
-    printf("[%d] = %d\n", j, weighted[j]);
-  }
-  */
+  
   printf("\n");
   int ret = weighted[rand() % 100];
   free(weighted);
   return ret;
 }
-
-/*
-int main(){
-  srand(time(NULL));
-  int j = 9;
-  int * test = assign(j);
-  int i;
-  for(i = 1; i < j+1; i++){
-    printf("[%d] = %d\n", i, test[i]);
-  }
-  int k = pick(test);
-  printf("value of pick: %d\n", k);
-  free(test);
-  return 1;
-}
-*/
