@@ -1,4 +1,4 @@
-select: sclient sserver
+all: sclient sserver
 
 sserver: select_server.o networking.o list.o
 	gcc -o server select_server.o networking.o list.o
