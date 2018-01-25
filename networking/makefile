@@ -1,5 +1,3 @@
-forking: client fserver
-
 select: sclient sserver
 
 sserver: select_server.o networking.o list.o
