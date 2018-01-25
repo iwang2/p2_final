@@ -67,7 +67,7 @@ int main() {
     n = n->next;
     count--;
   }
-  printf("finished writing\n");
+  printf("finished sending probability\n");
   free_list(head);
 }
 
