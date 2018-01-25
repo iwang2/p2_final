@@ -1,4 +1,5 @@
 #include "networking.h"
+#include "list.h"
 
 void subserver(int from_client);
 
@@ -15,12 +16,14 @@ int main() {
 
   printf("Enter the number of players: ");
   fgets(buffer, sizeof(buffer), stdin);
-  int playnum = atoi(buffer);
-  int sfd[playnum];
+  
+  int max = atoi(buffer);
+  struct node * head = (struct node *)malloc(sizeof(struct node));
 
   listen_socket = server_setup();
   
-  while (strcmp(buffer, "start\n") != 0) {
+  //while (strcmp(buffer, "start\n") != 0) {
+  while (max > subserver_count) {
     
     //select() modifies read_fds
     //we must reset it at each iteration
@@ -37,8 +40,11 @@ int main() {
       f = fork();
       if (f == 0)
 	subserver(client_socket);
+      
       else {
-	sfd[subserver_count] = client_socket;
+	if(subserver_count == 0) head->i = client_socket;
+	else head = insert_front(head, client_socket);
+        
 	subserver_count++;
 	printf("[server] subserver count: %d\n", subserver_count);
 	//close(client_socket);
@@ -47,7 +53,10 @@ int main() {
     
     fgets(buffer, sizeof(buffer), stdin);
   }
-  printf("game starting...\n");
+  print_list(head);
+  head = remove_node(head, head);
+  print_list(head);
+  free_list(head);
 }
 
 void subserver(int client_socket) {
@@ -57,7 +66,7 @@ void subserver(int client_socket) {
   strncpy(buffer, "hello client", sizeof(buffer));
   write(client_socket, buffer, sizeof(buffer));
 
-  fgets(buffer, sizeof(buffer), stdin);
+  //fgets(buffer, sizeof(buffer), stdin);
   /*
   while (1) {
     printf("enter data: ");
