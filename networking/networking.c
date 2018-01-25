@@ -21,6 +21,8 @@ int server_setup() {
 
   //create the socket
   sd = socket( AF_INET, SOCK_STREAM, 0 );
+  int option = 1;
+  setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
   error_check( sd, "server socket" );
   printf("[server] socket created\n");
 
