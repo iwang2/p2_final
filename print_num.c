@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <string.h>
-#include <errno.h>
+#include "print_num.h"
 
 // 16 lines per number
 // file size of percent is 368
@@ -54,13 +48,5 @@ void print_num (int n) {
 
   for (int k = 0; k < 3; k++) {
     close(fds[k][0]);
-  }
-}
-
-int main(int argc, char *argv[]){
-  if (argc > 0) {
-    int num = atoi(argv[1]);
-    //printf("%d\n", num);
-    print_num(num);
   }
 }
