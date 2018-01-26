@@ -25,7 +25,9 @@ Assuming the speakers on the main computer are loud enough, clients won't need t
 1. `$ make` to compile all the necessary files
 2. Have the server computer run `./server`
 3. Have each client run `./client SERVER_IP`, substituting in the IP address of the server
-4. Play the game, moving on to the next round by pressing the ENTER key on the server
+4. Specify the number of clients when prompted
+5. Play the game, pressing the ENTER key to continue gameplay.
+6. Enjoy!
 
 ### Bugs (or as we like to call them, "unique features") :bug: :honeybee: :ant: :beetle:
 - If a client exits prematurely (before being killed off), everything breaks and probability can't be assigned correctly.
