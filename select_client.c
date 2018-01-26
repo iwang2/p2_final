@@ -6,6 +6,10 @@ int main(int argc, char **argv) {
   int server_socket;
   char buffer[BUFFER_SIZE];
 
+  char * args[3];
+  args[0] = "cat";
+  args[2] = 0;
+
   fd_set read_fds;
 
   if (argc == 2)
@@ -19,15 +23,14 @@ int main(int argc, char **argv) {
     }
     else if (strcmp(buffer, "die") == 0) {
      //printf("I HAVE BEEN KILLED\n");
-     char *args[3];
-     args[0] = "cat";
+     //args[0] = "cat";
      args[1] = "dead.txt";
-     args[2] = 0;
+     //args[2] = 0;
      execvp(args[0], args);
    }
     else {
       if (fork() == 0) {
-        char *args[2];
+        //char *args[2];
         args[0] = "clear";
         args[1] = 0;
         execvp(args[0], args);
@@ -40,5 +43,8 @@ int main(int argc, char **argv) {
       //printf("%s\n", buffer);
     }
   }//end loop
-  printf("YOU WIN!!!\n");
+  args[0] = "cat";
+  args[1] = "win.txt";
+  execvp(args[0], args);
+  //printf("YOU WIN!!!\n");
 }

@@ -1,6 +1,7 @@
 #include "networking.h"
 #include "list.h"
 #include "algo.h"
+#include "play_song.h"
 
 int subserver_count = 0;
 void subserver(int from_client);
@@ -67,14 +68,20 @@ int main() {
     int kill_me = pick(probs); // gives the index in clients[] to close
     printf("probs: ");
     print_arr(probs, alive_clients + 1);
+    
+    printf("Pick which song you would like to play by entering it's corresponding number:\n");
+    printf("[0] Little Saint Nick, The Beach Boys\n");
+    printf("[1] Last Christmas, Wham!\n");
+    fgets(buffer, sizeof(buffer), stdin);
+    play(atoi(buffer));
+    
     for (int i = 0; i < alive_clients; i ++) {
       // Write each client its probability of death
       sprintf(buffer, "%d", probs[i + 1]);
       printf("%s\n", buffer);
       write(clients[i], buffer, sizeof(buffer));
     }
-    printf("The clock is ticking! Pick a chair!\n");
-    fgets(buffer, sizeof(buffer), stdin);
+    
     //printf("kill_me = %d\n", kill_me);
     write(clients[kill_me], "die", sizeof("die"));
     close(clients[kill_me]); // Kill the client
