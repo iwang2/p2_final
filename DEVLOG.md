@@ -10,4 +10,8 @@ DATE | SUMMARY
 01.22 | `i` settled on mpg123 for music playing
 01.24 | `a` function for assigning probabilities done
 01.24 | `a` function for picking client based off probability done
-01.25 | `a` music playing with fork/execvp works 
+01.25 | `a` stopping music with button press works 
+01.25 | `p` replaced linked list with array for easier work
+01.25 | `i` implimented music
+01.25 | `p` networking fully works
+01.25 | `pai` project is working
