@@ -11,7 +11,7 @@ To make things a little more festive (since this game is psychologically rather 
 ### Some More Detail on How This Thing Works
 We have one main computer, essentially the "server", that controls the game. It is the computer that all the players ("clients") connect to, and the computer that calculates the probability of death and determines which chair will be the "dead" chair.
 
-On the client end, not much is happening. As the music is running, the probability of death will be displayed in the terminal (in large ascii art so it can be seen while standing). Once the music stops, the chosen dead computer will display a death message to signify that it is no longer in the game. 
+On the client end, not much is happening. As the music is running, the probability of death will be displayed in the terminal (in large ascii art so it can be seen while standing; each number found at *[this](http://patorjk.com/software/taag/#p=display&h=0&v=0&f=Doh&t=0123456789%25)* website under the "doh" font). Once the music stops, the chosen dead computer will display a death message to signify that it is no longer in the game. 
 
 ### Required Libraries
 To play music, `mpg123` must be installed. This is only necessary for the main server (a.k.a. the computer that will be running the game).
