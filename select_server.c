@@ -63,17 +63,11 @@ int main() {
   fgets(buffer, sizeof(buffer), stdin); // Buffer for pressing ENTER
   while (dead_clients < max - 1) { // Ends with 1 client alive
     int alive_clients = max - dead_clients;
-    // Algorithm from algo.b
+    // Algorithm from algo.c
     int *probs = assign(alive_clients);
     int kill_me = pick(probs); // gives the index in clients[] to close
     printf("probs: ");
     print_arr(probs, alive_clients + 1);
-    
-    printf("Pick which song you would like to play by entering it's corresponding number:\n");
-    printf("[0] Little Saint Nick, The Beach Boys\n");
-    printf("[1] Last Christmas, Wham!\n");
-    fgets(buffer, sizeof(buffer), stdin);
-    play(atoi(buffer));
     
     for (int i = 0; i < alive_clients; i ++) {
       // Write each client its probability of death
@@ -81,6 +75,12 @@ int main() {
       printf("%s\n", buffer);
       write(clients[i], buffer, sizeof(buffer));
     }
+    
+    printf("Pick which song you would like to play by entering it's corresponding number:\n");
+    printf("[0] Little Saint Nick, The Beach Boys\n");
+    printf("[1] Last Christmas, Wham!\n");
+    fgets(buffer, sizeof(buffer), stdin);
+    play(atoi(buffer));
     
     //printf("kill_me = %d\n", kill_me);
     write(clients[kill_me], "die", sizeof("die"));
