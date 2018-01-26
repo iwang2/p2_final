@@ -32,3 +32,4 @@ Assuming the speakers on the main computer are loud enough, clients won't need t
 ### Bugs (or as we like to call them, "unique features") :bug: :honeybee: :ant: :beetle:
 - If a client exits prematurely (before being killed off), everything breaks and probability can't be assigned correctly.
 - The probability assigning algorithm itself is heavily biased. Computers that connect first have a greater chance of getting killed off.
+- (Mac Only) After running ./server and playing the game, the terminal window that ran the server will no longer have a cursor, and pressing enter will no longer create a newline, only creating a new prompt.
