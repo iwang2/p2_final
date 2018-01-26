@@ -14,11 +14,16 @@ int main(int argc, char **argv) {
     server_socket = client_setup( TEST_IP );
 
   while (read(server_socket, buffer, sizeof(buffer))) {
-    if(strcmp(buffer, "hello client") == 0){
-      printf("received: [%s]\n", buffer);
+    if(strstr(buffer, "Client")){
+      printf("This is %s\n", buffer);
     }
+    else if (strcmp(buffer, "die") == 0) {
+     printf("I HAVE BEEN KILLED\n");
+   }
     else {
+      printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
       print_num(atoi(buffer));
+      //printf("%s\n", buffer);
     }
   }//end loop
 }

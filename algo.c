@@ -39,5 +39,29 @@ int pick(int * probs){
   printf("\n");
   int ret = weighted[rand() % 100];
   free(weighted);
-  return ret;
+  return ret - 1;
+}
+
+void shift(int *arr, int size) {
+  // goal: Given an array with randomized integers, move all negative numbers to the very right
+  int j;
+  for (j = 0; j < size; j ++) {
+    int i;
+    for (i = size - 2; i > -1; i --) {
+      if (arr[i] < 0) {
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[i];
+        arr[i] = temp;
+      }
+    }
+  }
+}
+
+void print_arr(int *arr, int size) {
+  int i;
+  printf("{");
+  for (i = 0; i < size - 1; i ++) {
+    printf("%d, ", arr[i]);
+  }
+  printf("%d}\n", arr[i]);
 }
