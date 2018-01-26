@@ -10,3 +10,4 @@ DATE | SUMMARY
 01.22 | `i` settled on mpg123 for music playing
 01.24 | `a` function for assigning probabilities done
 01.24 | `a` function for picking client based off probability done
+01.25 | `a` music playing with fork/execvp works 
