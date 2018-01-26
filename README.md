@@ -16,8 +16,8 @@ On the client end, not much is happening. As the music is running, the probabili
 ### Required Libraries
 To play music, `mpg123` must be installed. This is only necessary for the main server (a.k.a. the computer that will be running the game).
 ```
-$ sudo apt-get install mpg123
-$ brew install mpg123  (for macs with homebrew)
+$ sudo apt-get install mpg123  // for linux
+$ brew install mpg123  // for macs with homebrew
 ```
 Assuming the speakers on the main computer are loud enough, clients won't need to install this (also our program doesn't play music from the client end). 
 
