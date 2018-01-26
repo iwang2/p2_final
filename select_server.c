@@ -1,7 +1,5 @@
 #include "networking.h"
-#include "list.h"
 #include "algo.h"
-#include "play_song.h"
 
 int subserver_count = 0;
 void subserver(int from_client);
@@ -69,18 +67,44 @@ int main() {
     printf("probs: ");
     print_arr(probs, alive_clients + 1);
     
-    for (int i = 0; i < alive_clients; i ++) {
-      // Write each client its probability of death
-      sprintf(buffer, "%d", probs[i + 1]);
-      printf("%s\n", buffer);
-      write(clients[i], buffer, sizeof(buffer));
-    }
-    
+    // PLAYING MUSIC ~~~~~~~~~~~~~  
     printf("Pick which song you would like to play by entering it's corresponding number:\n");
     printf("[0] Little Saint Nick, The Beach Boys\n");
     printf("[1] Last Christmas, Wham!\n");
     fgets(buffer, sizeof(buffer), stdin);
-    play(atoi(buffer));
+    int song = atoi(buffer);
+  
+    pid_t f;
+    char k[20] = "kill -s 9 ";
+
+    char * s;
+  
+    if(song) s = "Last_Christmas.mp3";
+    else s = "Little_Saint_Nick.mp3";
+ 
+    f = fork();          
+    if (f < 0) {  // just in case fork fails 
+      puts("fork failure");
+      exit(-1);
+    }   
+    else if (f == 0) { // child process 
+      execlp("mpg123", "mpg123", "-q", s, (char *)NULL);
+    }
+    else {
+      printf("Press ENTER to stop the music.\n");
+      
+      for (int i = 0; i < alive_clients; i ++) {
+	// Write each client its probability of death
+	sprintf(buffer, "%d", probs[i + 1]);
+	printf("%s ", buffer);
+	write(clients[i], buffer, sizeof(buffer));
+      }
+      
+      sprintf(k, "%s%d", k, f);
+      fgets(buffer, sizeof(buffer), stdin); // wait for user input
+      system(k);
+    }
+    printf("Music stopped.\n");
     
     //printf("kill_me = %d\n", kill_me);
     write(clients[kill_me], "die", sizeof("die"));
